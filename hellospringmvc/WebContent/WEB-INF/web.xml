@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+ 
+  <display-name>hellospringmvc</display-name>
+  
+  <!-- dao, sevlet을 처음 시작할때 만들고 시작하기 위해서 사용 -->
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>/WEB-INF/application-context.xml</param-value>
+  </context-param>
+  
+  <!-- 리로드나 읽혀질 순간을 감시하는것. dao, sevlet을 리로드때 읽혀질려고 사용 -->
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  
+  <!-- 설정이 안되있으면 web-inf 아래에서 dispactcher-sevlet을 찾음. -->
+  <servlet>
+  	<servlet-name>dispactcher</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<!-- 만약 설정이 되어있어서 그걸로 바꿀때. -->
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>/WEB-INF/servlet-context.xml</param-value>
+  		<!-- <param-name>classpath:com/kitri/hello/config/a.xml</param-name> web-inf밖의 다른경로에 있을때 -->
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>dispactcher</servlet-name>
+	<url-pattern>*.kitri</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 주소 아무것도 안쳤을때 index로 가라 -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
