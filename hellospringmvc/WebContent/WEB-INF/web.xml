@@ -29,6 +29,7 @@
   
   <servlet-mapping>
   	<servlet-name>dispactcher</servlet-name>
+  	<!-- <url-pattern>/</url-pattern> 모든 처리 담당 -->
 	<url-pattern>*.kitri</url-pattern>
   </servlet-mapping>
   
